@@ -1,28 +1,9 @@
-import { useState, useEffect } from "react";
-
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-export default function ImgMediaCard() {
-  const [array, setArray] = useState([]);
-
-  var requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
-
-  // useEffect(() => {
-  //   fetch("https://api.coincap.io/v2/assets", requestOptions)
-  //     .then((resp) => resp.json())
-  //     .then((data) => {
-  //       setArray(data);
-  //       console.log(data);
-  //     })
-  //     .catch((error) => console.log("error", error));
-  // }, [requestOptions]);
-
+export default function ImgMediaCard(props) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -33,18 +14,18 @@ export default function ImgMediaCard() {
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Crypto Currency Name
+          {props.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          price
-        </Typography>
-
-        <Typography variant="body2" color="text.secondary">
-          volume
+          {props.priceUsd}
         </Typography>
 
         <Typography variant="body2" color="text.secondary">
-          and/or any other important metrics
+          {props.volumeUsd24Hr}
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary">
+          {props.changePercent24Hr}
         </Typography>
       </CardContent>
     </Card>
