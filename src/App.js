@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
 
 import "./App.css";
 import ImgMediaCard from "./ImgMediaCard/ImgMediaCard";
@@ -47,6 +48,9 @@ function App() {
         <h1>RightDrive Dev Test</h1>
 
         <ContainedButton />
+
+        <Pagination count={list.length / 4} defaultPage={1} />
+        {/* <PaginationLink /> */}
         {error && <ServerModal />}
         <Box
           sx={{
@@ -60,9 +64,7 @@ function App() {
           {list.map((item) => (
             <ImgMediaCard {...item} key={item.id} />
           ))}
-          /
         </Box>
-        <PaginationLink />
       </header>
     </div>
   );
